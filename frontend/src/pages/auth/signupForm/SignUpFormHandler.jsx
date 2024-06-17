@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Stepper, Step } from "@material-tailwind/react";
 import Loader from "../../../components/elements/Loader";
-import UserFromStep1 from "./UserForm/UserFromStep1";
+import UserFormStep1 from "./UserForm/UserFormStep1";
 import UserFormStep2 from "./UserForm/UserFormStep2";
 import UserFormStep3 from "./UserForm/UserFormStep3";
 import UserFormStep4 from "./UserForm/UserFormStep4";
+import ProctorFormStep3 from "./ProctorForm/ProctorFormStep3";
 
 const UserForm = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -12,6 +13,10 @@ const UserForm = () => {
   const [isFirstStep, setIsFirstStep] = React.useState(false);
 
   const [formData, setFormData] = useState({});
+
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const handleNext = () => !isLastStep && setActiveStep((cur) => cur + 1);
   const handlePrev = () => !isFirstStep && setActiveStep((cur) => cur - 1);
@@ -30,7 +35,7 @@ const UserForm = () => {
         <Step className="cursor-pointer">4</Step>
       </Stepper>
       {activeStep === 0 && (
-        <UserFromStep1
+        <UserFormStep1
           formData={formData}
           setFormData={setFormData}
           setActiveStep={setActiveStep}
@@ -43,13 +48,22 @@ const UserForm = () => {
           setActiveStep={setActiveStep}
         />
       )}
-      {activeStep === 2 && (
+      {activeStep === 2 && formData.role === "student" && (
         <UserFormStep3
           formData={formData}
           setFormData={setFormData}
           setActiveStep={setActiveStep}
         />
       )}
+
+      {activeStep === 2 && formData.role === "proctor" && (
+        <ProctorFormStep3
+          formData={formData}
+          setFormData={setFormData}
+          setActiveStep={setActiveStep}
+        />
+      )}
+
       {activeStep === 3 && (
         <UserFormStep4
           formData={formData}

@@ -17,10 +17,9 @@ const UserFormStep1 = ({ formData, setFormData, setActiveStep }) => {
 
   const handleRoleSelect = (e) => {
     setAllowedToNextStep(true);
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
       role: e,
-    }));
+    });
     console.log(formData);
   };
 
@@ -34,7 +33,7 @@ const UserFormStep1 = ({ formData, setFormData, setActiveStep }) => {
           value={formData.role}
         >
           <Option value="student">Student / Working Professional</Option>
-          <Option value="admin">Proctor Admin</Option>
+          <Option value="proctor">Proctor Admin</Option>
         </Select>
         <div className="mt-5">
           <Button

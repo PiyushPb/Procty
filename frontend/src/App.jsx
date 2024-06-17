@@ -4,6 +4,7 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 // students components
 import StudentsLayout from "./templates/Layout/students/StudentsLayout";
+import UserNotVerified from "./pages/UserNotVerified";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         {/* Admin routes */}
 
         {/* Proctor routes */}
+        <Route path="/userNotVerified" element={<UserNotVerified />} />
       </Routes>
     </Router>
   );

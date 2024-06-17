@@ -89,7 +89,7 @@ const UserFormStep2 = ({ formData, setFormData, setActiveStep }) => {
     <div>
       <h2 className="formHeading">Personal Details</h2>
       <div className="flex gap-5 flex-col">
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-col sm:flex-row">
           <div className="flex-1">
             <Input
               type="text"
